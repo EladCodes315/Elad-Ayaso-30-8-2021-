@@ -32,9 +32,9 @@ function App(){
 		<div className="App" style={{ color: fontColor, backgroundImage: `url(${bgImage})` }}>
 			<NavBarComp handleThemeChange={handleThemeChange} theme={theme} iconStyle={iconStyle} setIconStyle={setIconStyle} />
 			<Switch>
-				<Route path="/favorites" component={FavoritesScreen} />
-				<Route path="/:id" component={HomeScreen} />
-				<Route path="/" component={HomeScreen} />
+				<Route path="/:projectname/favorites" component={FavoritesScreen} />
+				<Route path="/:projectname/:id" component={HomeScreen} />
+				<Route path="/:projectname" component={HomeScreen} />
 			</Switch>
 		</div>
 	);

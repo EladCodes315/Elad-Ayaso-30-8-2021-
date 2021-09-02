@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const myKey = 'ogvP21oTdyCaLDEHKv9L0OYbZfM0wBtl';
+const myKey = 'U00lVIFaDs3DL1PhWC7xyQdiYHE0A34b';
 
 export const getForecast = createAsyncThunk('location/getForecast', async (locationKey, { dispatch, getState }) => {
 	const api = {
-		base: `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}`,
+		base: `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}`,
 		query: `?apikey=${myKey}`
 	};
 	return fetch(api.base + api.query).then(res => res.json());

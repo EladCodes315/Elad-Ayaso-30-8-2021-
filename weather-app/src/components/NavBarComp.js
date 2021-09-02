@@ -31,11 +31,9 @@ const NavBarComp = ({ handleThemeChange, theme, iconStyle, setIconStyle }) => {
 					{theme === 'dark' ? <i className="fas fa-sun" style={iconStyle} /> : <i className="fas fa-moon" style={iconStyle} />}
 				</Button>
 				<Nav className="me-auto d-flex">
-					<Link to="/" style={{ textDecoration: 'none', color: 'darkgray' }}>
-						Home
-					</Link>
+					<Link to="/Elad-Ayaso-30-8-2021-">Home</Link>
 
-					<Link to="/favorites" style={{ textDecoration: 'none', color: 'darkgray', marginLeft: '5px' }}>
+					<Link to="/Elad-Ayaso-30-8-2021-/favorites" style={{ marginLeft: '12px' }}>
 						Favorites
 					</Link>
 				</Nav>

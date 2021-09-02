@@ -6,7 +6,7 @@ const FavoriteCityComp = ({ fav }) => {
 	return (
 		<div className="favorite-location">
 			<div className="location-name">
-				<Link to={`/${fav.id}`}>{fav.name}</Link>
+				<Link to={`/Elad-Ayaso-30-8-2021-/${fav.id}`}>{fav.name}</Link>
 			</div>
 			<div className="location-degree">
 				{fav.currentWeather.Temperature.Metric.Value}°{fav.currentWeather.Temperature.Metric.Unit}

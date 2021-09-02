@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const myKey = 'ogvP21oTdyCaLDEHKv9L0OYbZfM0wBtl';
+const myKey = 'U00lVIFaDs3DL1PhWC7xyQdiYHE0A34b';
 
 export const getLocationAutocomplete = createAsyncThunk('location/getLocationAutocomplete', async (cityName, { dispatch, getState }) => {
 	const api = {
-		base: 'http://dataservice.accuweather.com/locations/v1/cities/autocomplete',
+		base: 'https://dataservice.accuweather.com/locations/v1/cities/autocomplete',
 		query: `?apikey=${myKey}&q=${cityName}`
 	};
 	return fetch(api.base + api.query).then(res => res.json());

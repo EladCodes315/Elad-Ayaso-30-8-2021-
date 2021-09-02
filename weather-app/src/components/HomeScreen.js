@@ -6,7 +6,7 @@ import { getForecast } from '../redux/slices/forecastSlice';
 import { getGeolocation } from '../redux/slices/geolocationSlice';
 import ForecastDay from './ForecastDay';
 import CurrentWeatherComp from './CurrentWeatherComp';
-import { FormControl, InputGroup, Spinner } from 'react-bootstrap';
+import { FormControl, InputGroup, Modal, Spinner } from 'react-bootstrap';
 import './HomeScreen.css';
 
 const HomeScreen = ({ match }) => {
@@ -27,6 +27,7 @@ const HomeScreen = ({ match }) => {
 			dispatch(getCurrentCondition(match.params.id));
 			dispatch(getForecast(match.params.id));
 			localStorage.setItem('locationKey', match.params.id);
+			console.log(localStorage.getItem('locationKey'));
 			setCity(favorites.find(fav => fav.id === match.params.id).name);
 		}
 		else {
@@ -97,6 +98,8 @@ const HomeScreen = ({ match }) => {
 
 			{currentConditionData.WeatherText === undefined || forecastData.DailyForecasts === undefined || geolocationData.Key === undefined ? (
 				<Spinner animation="border" style={{ marginTop: '50px' }} />
+			) : currentConditionData.status === 'failed' || currentConditionData.status === 'failed' || geolocationData.status === 'failed' ? (
+				alert('Server Failed To Fetch From API!!!')
 			) : (
 				<div className="weather-container">
 					<CurrentWeatherComp city={city} celcius={celcius} setCelcius={setCelcius} getDegreesStr={getDegreesStr} />

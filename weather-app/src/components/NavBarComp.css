@@ -5,3 +5,8 @@
 .navbar-container {
 	color: darkgray;
 }
+
+.navbar-container > div > a {
+	text-decoration: none;
+	color: darkgray;
+}
