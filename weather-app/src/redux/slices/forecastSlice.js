@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const myKey = 'U00lVIFaDs3DL1PhWC7xyQdiYHE0A34b';
+const myKey = 'tlGPJHqQYAiOnONKrESphRcYcXGTgSpW';
 
 export const getForecast = createAsyncThunk('location/getForecast', async (locationKey, { dispatch, getState }) => {
 	const api = {

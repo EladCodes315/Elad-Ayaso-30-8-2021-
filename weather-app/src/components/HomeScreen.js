@@ -95,7 +95,10 @@ const HomeScreen = ({ match }) => {
 				<div />
 			)}
 
-			{currentCondition.status === 'loading' || forecast.status === 'loading' || geolocation.status === 'loading' ? (
+			{currentCondition.status === 'loading' ||
+			forecast.status === 'loading' ||
+			forecast.status === null ||
+			geolocation.status === 'loading' ? (
 				<Spinner animation="border" style={{ marginTop: '50px' }} />
 			) : currentCondition.status === 'failed' || forecast.status === 'failed' || geolocation.status === 'failed' ? (
 				alert('The allowed number of requests has been exceeded!')
