@@ -81,7 +81,7 @@ const HomeScreen = ({ match }) => {
 			</InputGroup>
 			{displaySuggestionBox && locationAutocomplete.status === 'success' ? (
 				<div className="autocomplete-container">
-					{locationAutocompleteData.map((location, index) => {
+					{locationAutocomplete.data.map((location, index) => {
 						return (
 							<div className="option" key={index} onClick={() => clickSuggestion(location)} tabIndex="0">
 								<span>
@@ -97,7 +97,7 @@ const HomeScreen = ({ match }) => {
 
 			{currentCondition.status === 'loading' || forecast.status === 'loading' || geolocation.status === 'loading' ? (
 				<Spinner animation="border" style={{ marginTop: '50px' }} />
-			) : currentCondition.status === 'failed' || forecast.status === 'failed' || geolocationData.status === 'failed' ? (
+			) : currentCondition.status === 'failed' || forecast.status === 'failed' || geolocation.status === 'failed' ? (
 				alert('The allowed number of requests has been exceeded!')
 			) : (
 				<div className="weather-container">
