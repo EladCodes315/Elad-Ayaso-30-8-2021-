@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Elad-Ayaso-30-8-2021-/static/css/main.2a359dc8.chunk.css",
-    "main.js": "/Elad-Ayaso-30-8-2021-/static/js/main.c665d4c7.chunk.js",
-    "main.js.map": "/Elad-Ayaso-30-8-2021-/static/js/main.c665d4c7.chunk.js.map",
+    "main.css": "/Elad-Ayaso-30-8-2021-/static/css/main.02ac8e2e.chunk.css",
+    "main.js": "/Elad-Ayaso-30-8-2021-/static/js/main.4c1436d9.chunk.js",
+    "main.js.map": "/Elad-Ayaso-30-8-2021-/static/js/main.4c1436d9.chunk.js.map",
     "runtime-main.js": "/Elad-Ayaso-30-8-2021-/static/js/runtime-main.399eacef.js",
     "runtime-main.js.map": "/Elad-Ayaso-30-8-2021-/static/js/runtime-main.399eacef.js.map",
     "static/css/2.818011ed.chunk.css": "/Elad-Ayaso-30-8-2021-/static/css/2.818011ed.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.bc72c2c3.chunk.js.map": "/Elad-Ayaso-30-8-2021-/static/js/3.bc72c2c3.chunk.js.map",
     "index.html": "/Elad-Ayaso-30-8-2021-/index.html",
     "static/css/2.818011ed.chunk.css.map": "/Elad-Ayaso-30-8-2021-/static/css/2.818011ed.chunk.css.map",
-    "static/css/main.2a359dc8.chunk.css.map": "/Elad-Ayaso-30-8-2021-/static/css/main.2a359dc8.chunk.css.map",
+    "static/css/main.02ac8e2e.chunk.css.map": "/Elad-Ayaso-30-8-2021-/static/css/main.02ac8e2e.chunk.css.map",
     "static/js/2.79887294.chunk.js.LICENSE.txt": "/Elad-Ayaso-30-8-2021-/static/js/2.79887294.chunk.js.LICENSE.txt",
     "static/media/light-mode.46247aaa.jpg": "/Elad-Ayaso-30-8-2021-/static/media/light-mode.46247aaa.jpg",
     "static/media/night-mode.94f5695e.jpg": "/Elad-Ayaso-30-8-2021-/static/media/night-mode.94f5695e.jpg"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.399eacef.js",
     "static/css/2.818011ed.chunk.css",
     "static/js/2.79887294.chunk.js",
-    "static/css/main.2a359dc8.chunk.css",
-    "static/js/main.c665d4c7.chunk.js"
+    "static/css/main.02ac8e2e.chunk.css",
+    "static/js/main.4c1436d9.chunk.js"
   ]
 }
