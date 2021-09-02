@@ -1,0 +1,56 @@
+.homescreen {
+	text-align: center;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	height: 90%;
+	position: relative;
+}
+
+.input-group {
+	margin-top: 60px;
+}
+
+.input-textfield {
+	text-transform: capitalize;
+}
+
+.autocomplete-container {
+	color: #000;
+	background-color: whitesmoke;
+	width: 350px;
+	height: 150px;
+	overflow: auto;
+	position: fixed;
+	margin-top: 100px;
+}
+
+.option {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 480px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.option,
+span {
+	font-size: 14px;
+	text-transform: capitalize;
+}
+
+.option:hover {
+	opacity: 0.5;
+}
+
+.weather-container {
+	margin-top: 50px;
+	width: 100%;
+}
+
+.forecast-info {
+	margin-top: 70px;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}

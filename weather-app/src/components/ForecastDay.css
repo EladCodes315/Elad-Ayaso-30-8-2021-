@@ -1,0 +1,46 @@
+.day {
+	font-size: 20px;
+}
+
+.w-icon {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 80px;
+	width: 80px;
+}
+
+.temp {
+	font-size: 20px;
+}
+
+@media (max-width: 760px) {
+	.temp {
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 550px) {
+	.w-icon {
+		height: 60px;
+		width: 60px;
+	}
+	.temp {
+		font-size: 12px;
+	}
+	.day {
+		font-size: 17px;
+	}
+}
+
+@media (max-width: 450px) {
+	.w-icon {
+		height: 50px;
+		width: 50px;
+	}
+	.temp {
+		font-size: 10px;
+	}
+	.day {
+		font-size: 15px;
+	}
+}

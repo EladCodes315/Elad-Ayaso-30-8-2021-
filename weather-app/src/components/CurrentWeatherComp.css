@@ -1,0 +1,24 @@
+.location-info {
+	font-size: 20px;
+}
+
+.favorites-icon {
+	margin-left: 15px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.degrees-info {
+	font-size: 65px;
+}
+
+.weather-description {
+	font-size: 20px;
+}
+
+.degree-change-btn {
+	font-size: 20px;
+	font-weight: normal;
+	cursor: pointer;
+	display: inline-block;
+}

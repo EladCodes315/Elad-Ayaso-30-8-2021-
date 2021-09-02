@@ -1,0 +1,16 @@
+.favorite-location {
+	margin-top: 40px;
+}
+
+.location-name {
+	font-size: 20px;
+}
+
+.location-name > a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.location-name > a:hover {
+	color: inherit;
+}

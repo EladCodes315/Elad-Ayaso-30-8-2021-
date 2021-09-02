@@ -1,0 +1,15 @@
+.favoritesscreen {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.favorites-headline {
+	margin-top: 50px;
+}
+
+.favorites-grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	width: 100%;
+}
