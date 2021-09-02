@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Elad-Ayaso-30-8-2021-/static/css/main.2a359dc8.chunk.css",
-    "main.js": "/Elad-Ayaso-30-8-2021-/static/js/main.b7f8a703.chunk.js",
-    "main.js.map": "/Elad-Ayaso-30-8-2021-/static/js/main.b7f8a703.chunk.js.map",
+    "main.js": "/Elad-Ayaso-30-8-2021-/static/js/main.4e3ca21b.chunk.js",
+    "main.js.map": "/Elad-Ayaso-30-8-2021-/static/js/main.4e3ca21b.chunk.js.map",
     "runtime-main.js": "/Elad-Ayaso-30-8-2021-/static/js/runtime-main.399eacef.js",
     "runtime-main.js.map": "/Elad-Ayaso-30-8-2021-/static/js/runtime-main.399eacef.js.map",
     "static/css/2.818011ed.chunk.css": "/Elad-Ayaso-30-8-2021-/static/css/2.818011ed.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.818011ed.chunk.css",
     "static/js/2.7be235a1.chunk.js",
     "static/css/main.2a359dc8.chunk.css",
-    "static/js/main.b7f8a703.chunk.js"
+    "static/js/main.4e3ca21b.chunk.js"
   ]
 }
