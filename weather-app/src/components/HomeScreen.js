@@ -6,7 +6,7 @@ import { getForecast } from '../redux/slices/forecastSlice';
 import { getGeolocation } from '../redux/slices/geolocationSlice';
 import ForecastDay from './ForecastDay';
 import CurrentWeatherComp from './CurrentWeatherComp';
-import { FormControl, InputGroup, Modal, Spinner } from 'react-bootstrap';
+import { FormControl, InputGroup, Spinner } from 'react-bootstrap';
 import './HomeScreen.css';
 
 const HomeScreen = ({ match }) => {
@@ -15,10 +15,10 @@ const HomeScreen = ({ match }) => {
 	const [ city, setCity ] = useState('');
 	const [ celcius, setCelcius ] = useState(false);
 	const dispatch = useDispatch();
-	let { data: currentConditionData } = useSelector(state => state.currentCondition);
-	let { data: forecastData } = useSelector(state => state.forecast);
-	let { data: locationAutocompleteData } = useSelector(state => state.locationAutocomplete);
-	let { data: geolocationData } = useSelector(state => state.geolocation);
+	let currentCondition = useSelector(state => state.currentCondition);
+	let forecast = useSelector(state => state.forecast);
+	let locationAutocomplete = useSelector(state => state.locationAutocomplete);
+	let geolocation = useSelector(state => state.geolocation);
 	let { data: favorites } = useSelector(state => state.favorites);
 
 	useEffect(() => {
@@ -27,7 +27,6 @@ const HomeScreen = ({ match }) => {
 			dispatch(getCurrentCondition(match.params.id));
 			dispatch(getForecast(match.params.id));
 			localStorage.setItem('locationKey', match.params.id);
-			console.log(localStorage.getItem('locationKey'));
 			setCity(favorites.find(fav => fav.id === match.params.id).name);
 		}
 		else {
@@ -80,7 +79,7 @@ const HomeScreen = ({ match }) => {
 					autoComplete="off"
 				/>
 			</InputGroup>
-			{displaySuggestionBox && locationAutocompleteData.length > 0 ? (
+			{displaySuggestionBox && locationAutocomplete.status === 'success' ? (
 				<div className="autocomplete-container">
 					{locationAutocompleteData.map((location, index) => {
 						return (
@@ -96,16 +95,15 @@ const HomeScreen = ({ match }) => {
 				<div />
 			)}
 
-			{currentConditionData.WeatherText === undefined || forecastData.DailyForecasts === undefined || geolocationData.Key === undefined ? (
+			{currentCondition.status === 'loading' || forecast.status === 'loading' || geolocation.status === 'loading' ? (
 				<Spinner animation="border" style={{ marginTop: '50px' }} />
-			) : currentConditionData.status === 'failed' || currentConditionData.status === 'failed' || geolocationData.status === 'failed' ? (
-				alert('Server Failed To Fetch From API!!!')
+			) : currentCondition.status === 'failed' || forecast.status === 'failed' || geolocationData.status === 'failed' ? (
+				alert('The allowed number of requests has been exceeded!')
 			) : (
 				<div className="weather-container">
 					<CurrentWeatherComp city={city} celcius={celcius} setCelcius={setCelcius} getDegreesStr={getDegreesStr} />
-
 					<div className="forecast-info">
-						{forecastData.DailyForecasts.map((daily, index) => <ForecastDay key={index} daily={daily} getDegreesStr={getDegreesStr} />)}
+						{forecast.data.DailyForecasts.map((daily, index) => <ForecastDay key={index} daily={daily} getDegreesStr={getDegreesStr} />)}
 					</div>
 				</div>
 			)}

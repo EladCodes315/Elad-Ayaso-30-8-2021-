@@ -19,14 +19,14 @@ const currentConditionSlice = createSlice({
 	},
 	extraReducers: {
 		[getCurrentCondition.pending]: (state, action) => {
-			state.status = 'Get location conditions loading';
+			state.status = 'loading';
 		},
 		[getCurrentCondition.fulfilled]: (state, { payload }) => {
 			state.data = payload[0];
-			state.status = 'Get location conditions success';
+			state.status = 'success';
 		},
 		[getCurrentCondition.rejected]: (state, action) => {
-			state.status = 'Get location conditions failed';
+			state.status = 'failed';
 		},
 		removeFromFavoritesConditions: (state, action) => {
 			let favoritesConditionsArr = [ ...state.favoritesConditions ];

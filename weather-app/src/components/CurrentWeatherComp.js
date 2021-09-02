@@ -20,7 +20,6 @@ const CurrentWeatherComp = ({ celcius, setCelcius, city, getDegreesStr }) => {
 	};
 
 	const favoritesHandler = () => {
-		console.log(checkIfFavorite());
 		if (checkIfFavorite()) {
 			dispatch(
 				removeFromFavorites({
