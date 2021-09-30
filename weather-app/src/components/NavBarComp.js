@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import './NavBarComp.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeTheme } from '../redux/slices/themeSlice';
 
-const NavBarComp = ({ handleThemeChange, theme, iconStyle, setIconStyle }) => {
+const NavBarComp = () => {
+	const [ iconStyle, setIconStyle ] = useState({ color: 'lightgray' });
+	const dispatch = useDispatch();
+	let { data: theme } = useSelector(state => state.theme);
+
 	const changeIconOpacity = e => {
 		if (theme === 'dark') {
 			let style = e._reactName === 'onMouseEnter' ? { color: `lightgray` } : { color: 'darkgray' };
@@ -19,12 +25,13 @@ const NavBarComp = ({ handleThemeChange, theme, iconStyle, setIconStyle }) => {
 
 	return (
 		<Navbar className="navbar" bg={theme} variant={theme}>
+			{console.log('Hello from Nav Comp')}
 			<Container className="navbar-container">
-				<Navbar.Brand>Herolo Weather Task</Navbar.Brand>
+				<Navbar.Brand className="navbar-brand">Herolo Weather Task</Navbar.Brand>
 				<Button
 					variant="outline-secondary"
 					style={{ border: '0px', color: 'darkgray', backgroundColor: btnBgColor }}
-					onClick={handleThemeChange}
+					onClick={() => dispatch(changeTheme())}
 					onMouseEnter={e => changeIconOpacity(e)}
 					onMouseLeave={e => changeIconOpacity(e)}
 				>
@@ -42,4 +49,4 @@ const NavBarComp = ({ handleThemeChange, theme, iconStyle, setIconStyle }) => {
 	);
 };
 
-export default NavBarComp;
+export default React.memo(NavBarComp);

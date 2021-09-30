@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const myKey = 'tlGPJHqQYAiOnONKrESphRcYcXGTgSpW';
+const myKey = 'pTlggNCtyjllgOjeA8DqkvFbY7nADvhw';
 
 export const getLocationAutocomplete = createAsyncThunk('location/getLocationAutocomplete', async (cityName, { dispatch, getState }) => {
 	const api = {

@@ -5,6 +5,7 @@ import './FavoriteCityComp.css';
 const FavoriteCityComp = ({ fav }) => {
 	return (
 		<div className="favorite-location">
+			{console.log('Hello from MyCity Comp')}
 			<div className="location-name">
 				<Link to={`/Elad-Ayaso-30-8-2021-/${fav.id}`}>{fav.name}</Link>
 			</div>
@@ -22,4 +23,4 @@ const FavoriteCityComp = ({ fav }) => {
 	);
 };
 
-export default FavoriteCityComp;
+export default React.memo(FavoriteCityComp);

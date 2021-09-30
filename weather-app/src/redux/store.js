@@ -4,6 +4,8 @@ import locationAutocompleteReducer from './slices/locationAutocompleteSlice';
 import forecastReducer from './slices/forecastSlice';
 import geolocationReducer from './slices/geolocationSlice';
 import favoritesReducer from './slices/favoritesSlice';
+import celciusReducer from './slices/celciusSlice';
+import themeReducer from './slices/themeSlice';
 
 export default configureStore({
 	reducer: {
@@ -11,6 +13,8 @@ export default configureStore({
 		locationAutocomplete: locationAutocompleteReducer,
 		forecast: forecastReducer,
 		geolocation: geolocationReducer,
-		favorites: favoritesReducer
+		favorites: favoritesReducer,
+		celcius: celciusReducer,
+		theme: themeReducer
 	}
 });

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocationAutocomplete } from '../redux/slices/locationAutocompleteSlice';
 import { getCurrentCondition } from '../redux/slices/currentConditionSlice';
@@ -8,47 +8,66 @@ import ForecastDay from './ForecastDay';
 import CurrentWeatherComp from './CurrentWeatherComp';
 import { FormControl, InputGroup, Spinner } from 'react-bootstrap';
 import './HomeScreen.css';
+import useDebounce from '../hooks/useDebounce';
 
 const HomeScreen = ({ match }) => {
 	const [ query, setQuery ] = useState('');
 	const [ displaySuggestionBox, setDisplaySuggestionBox ] = useState(false);
 	const [ city, setCity ] = useState('');
-	const [ celcius, setCelcius ] = useState(false);
+	//debounce
+	const debouncedQuery = useDebounce(query, 1000);
+
 	const dispatch = useDispatch();
 	let currentCondition = useSelector(state => state.currentCondition);
 	let forecast = useSelector(state => state.forecast);
 	let locationAutocomplete = useSelector(state => state.locationAutocomplete);
 	let geolocation = useSelector(state => state.geolocation);
 	let { data: favorites } = useSelector(state => state.favorites);
+	let { data: celcius } = useSelector(state => state.celcius);
 
-	useEffect(() => {
-		if (match.params.id !== undefined) {
-			dispatch(getGeolocation('32.045, 34.77'));
-			dispatch(getCurrentCondition(match.params.id));
-			dispatch(getForecast(match.params.id));
-			localStorage.setItem('locationKey', match.params.id);
-			setCity(favorites.find(fav => fav.id === match.params.id).name);
-		}
-		else {
-			dispatch(getGeolocation('32.045, 34.77'));
-			dispatch(getCurrentCondition('215854'));
-			dispatch(getForecast('215854'));
-			localStorage.setItem('locationKey', '215854');
-			setCity('');
-		}
-	}, []);
+	useEffect(
+		() => {
+			if (match.params.id !== undefined) {
+				dispatch(getCurrentCondition(match.params.id));
+				dispatch(getForecast(match.params.id));
+				localStorage.setItem('locationKey', match.params.id);
+				setCity(favorites.find(fav => fav.id === match.params.id).name);
+			}
+			else {
+				dispatch(getGeolocation('32.045, 34.77'));
+				dispatch(getCurrentCondition('215854'));
+				dispatch(getForecast('215854'));
+				localStorage.setItem('locationKey', '215854');
+				setCity('');
+			}
+		},
+		[ dispatch, match.params.id ]
+	);
 
-	const search = async cityName => {
-		dispatch(getLocationAutocomplete(cityName));
+	useEffect(
+		() => {
+			if (debouncedQuery) {
+				dispatch(getLocationAutocomplete(debouncedQuery));
+			}
+		},
+		[ dispatch, debouncedQuery ]
+	);
+
+	const handleSearch = e => {
+		const { value } = e.target;
+		setQuery(value);
 	};
 
-	const getDegreesStr = fahren => {
-		if (celcius) {
-			let calcCelcius = (fahren - 32) / 1.8;
-			return `${calcCelcius.toFixed(1)}°C`;
-		}
-		else return `${fahren.toFixed(1)}°F`;
-	};
+	const getDegreesStr = useCallback(
+		fahren => {
+			if (celcius) {
+				let calcCelcius = (fahren - 32) / 1.8;
+				return `${calcCelcius.toFixed(1)}°C`;
+			}
+			else return `${fahren.toFixed(1)}°F`;
+		},
+		[ celcius ]
+	);
 
 	const clickSuggestion = location => {
 		setQuery(location.LocalizedName);
@@ -66,16 +85,14 @@ const HomeScreen = ({ match }) => {
 
 	return (
 		<div className="homescreen" onClick={suggestionBoxHandler}>
+			{console.log('Hello from Home Comp')}
 			<InputGroup className="input-group" style={{ width: '350px' }}>
 				<FormControl
 					className="input-textfield"
 					placeholder="Enter city here"
 					value={query}
 					onClick={() => setDisplaySuggestionBox(true)}
-					onChange={event => {
-						search(event.target.value);
-						setQuery(event.target.value);
-					}}
+					onChange={handleSearch}
 					autoComplete="off"
 				/>
 			</InputGroup>
@@ -104,7 +121,7 @@ const HomeScreen = ({ match }) => {
 				alert('The allowed number of requests has been exceeded!')
 			) : (
 				<div className="weather-container">
-					<CurrentWeatherComp city={city} celcius={celcius} setCelcius={setCelcius} getDegreesStr={getDegreesStr} />
+					<CurrentWeatherComp city={city} getDegreesStr={getDegreesStr} />
 					<div className="forecast-info">
 						{forecast.data.DailyForecasts.map((daily, index) => <ForecastDay key={index} daily={daily} getDegreesStr={getDegreesStr} />)}
 					</div>
@@ -113,4 +130,4 @@ const HomeScreen = ({ match }) => {
 		</div>
 	);
 };
-export default HomeScreen;
+export default React.memo(HomeScreen);

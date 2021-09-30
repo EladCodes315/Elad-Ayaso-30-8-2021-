@@ -8,6 +8,7 @@ const FavoritesScreen = () => {
 
 	return (
 		<div className="favoritesscreen">
+			{console.log('Hello from Favorites Comp')}
 			<h2 className="favorites-headline">My Favorites</h2>
 			{favoritesData.length === 0 ? (
 				<h5>You Don't Have Any Favorites Yet!</h5>
@@ -18,4 +19,4 @@ const FavoritesScreen = () => {
 	);
 };
 
-export default FavoritesScreen;
+export default React.memo(FavoritesScreen);

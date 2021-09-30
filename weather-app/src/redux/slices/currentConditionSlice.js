@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const myKey = 'tlGPJHqQYAiOnONKrESphRcYcXGTgSpW';
+const myKey = 'pTlggNCtyjllgOjeA8DqkvFbY7nADvhw';
 
 export const getCurrentCondition = createAsyncThunk('location/getCurrentCondition', async (locationKey, { dispatch, getState }) => {
 	const api = {
@@ -14,7 +14,6 @@ const currentConditionSlice = createSlice({
 	name: 'currentCondition',
 	initialState: {
 		data: {},
-		favoritesConditions: [],
 		status: null
 	},
 	extraReducers: {
@@ -27,10 +26,6 @@ const currentConditionSlice = createSlice({
 		},
 		[getCurrentCondition.rejected]: (state, action) => {
 			state.status = 'failed';
-		},
-		removeFromFavoritesConditions: (state, action) => {
-			let favoritesConditionsArr = [ ...state.favoritesConditions ];
-			state.favoritesConditions = favoritesConditionsArr.filter(fav => fav.id === action.payload.id);
 		}
 	}
 });
