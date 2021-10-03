@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const myKey = 'pTlggNCtyjllgOjeA8DqkvFbY7nADvhw';
+const myKey = 'ogvP21oTdyCaLDEHKv9L0OYbZfM0wBtl';
 
 export const getGeolocation = createAsyncThunk('location/getGeolocation', async (latLonStr, { dispatch, getState }) => {
 	const api = {
