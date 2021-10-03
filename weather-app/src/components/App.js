@@ -15,7 +15,6 @@ function App(){
 
 	return (
 		<div className="App" style={{ color: fontColor, backgroundImage: `url(${bgImage})` }}>
-			{console.log('Hello from App Comp')}
 			<NavBarComp />
 			<Switch>
 				<Route path="/:projectname/favorites" component={FavoritesScreen} />

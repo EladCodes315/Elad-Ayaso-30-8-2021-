@@ -72,9 +72,22 @@ const HomeScreen = ({ match }) => {
 		}
 	};
 
+	const showLoader = () => {
+		if (currentCondition.status === 'loading' || forecast.status === 'loading' || geolocation.status === 'loading' || forecast.status === null) {
+			return true;
+		}
+		else return false;
+	};
+
+	const showAlert = () => {
+		if (currentCondition.status === 'failed' || forecast.status === 'failed' || geolocation.status === 'failed') {
+			return true;
+		}
+		else return false;
+	};
+
 	return (
 		<div className="homescreen" onClick={suggestionBoxHandler}>
-			{console.log('Hello from Home Comp')}
 			<InputGroup className="input-group" style={{ width: '350px' }}>
 				<FormControl
 					className="input-textfield"
@@ -101,12 +114,9 @@ const HomeScreen = ({ match }) => {
 				<div />
 			)}
 
-			{currentCondition.status === 'loading' ||
-			forecast.status === 'loading' ||
-			geolocation.status === 'loading' ||
-			forecast.status === null ? (
+			{showLoader() ? (
 				<Spinner animation="border" style={{ marginTop: '50px' }} />
-			) : currentCondition.status === 'failed' || forecast.status === 'failed' || geolocation.status === 'failed' ? (
+			) : showAlert() ? (
 				alert('The allowed number of requests has been exceeded!')
 			) : (
 				<div className="weather-container">

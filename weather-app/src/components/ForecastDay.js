@@ -26,7 +26,6 @@ const ForecastDay = ({ daily }) => {
 
 	return (
 		<div className="weather-forecast-item" style={{}}>
-			{console.log('Hello from Forecast Comp')}
 			<div className="day">{dayFinder()}</div>
 			<img src={`https://www.accuweather.com/images/weathericons/${daily.Day.Icon}.svg`} className="w-icon" alt="" />
 			<div className="temp">

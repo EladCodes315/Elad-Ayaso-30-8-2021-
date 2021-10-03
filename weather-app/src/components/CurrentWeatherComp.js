@@ -46,7 +46,6 @@ const CurrentWeatherComp = ({ city }) => {
 
 	return (
 		<div className="current-location">
-			{console.log('Hello from Current Comp')}
 			<div className="location-weather-container">
 				<div className="location-info">
 					{city !== '' ? city : geolocationData.LocalizedName}

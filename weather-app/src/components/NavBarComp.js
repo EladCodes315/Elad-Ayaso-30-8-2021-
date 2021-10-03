@@ -13,7 +13,6 @@ const NavBarComp = () => {
 
 	return (
 		<Navbar className="navbar" bg={theme} variant={theme}>
-			{console.log('Hello from Nav Comp')}
 			<Container className="navbar-container">
 				<Navbar.Brand className="navbar-brand">Herolo Weather Task</Navbar.Brand>
 				<Button
