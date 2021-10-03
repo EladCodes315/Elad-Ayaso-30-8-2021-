@@ -34,9 +34,9 @@ const HomeScreen = ({ match }) => {
 				setCity(favorites.find(fav => fav.id === match.params.id).name);
 			}
 			else {
+				dispatch(getForecast('215854'));
 				dispatch(getGeolocation('32.045, 34.77'));
 				dispatch(getCurrentCondition('215854'));
-				dispatch(getForecast('215854'));
 				localStorage.setItem('locationKey', '215854');
 				setCity('');
 			}
@@ -57,17 +57,6 @@ const HomeScreen = ({ match }) => {
 		const { value } = e.target;
 		setQuery(value);
 	};
-
-	const getDegreesStr = useCallback(
-		fahren => {
-			if (celcius) {
-				let calcCelcius = (fahren - 32) / 1.8;
-				return `${calcCelcius.toFixed(1)}°C`;
-			}
-			else return `${fahren.toFixed(1)}°F`;
-		},
-		[ celcius ]
-	);
 
 	const clickSuggestion = location => {
 		setQuery(location.LocalizedName);
@@ -114,16 +103,16 @@ const HomeScreen = ({ match }) => {
 
 			{currentCondition.status === 'loading' ||
 			forecast.status === 'loading' ||
-			forecast.status === null ||
-			geolocation.status === 'loading' ? (
+			geolocation.status === 'loading' ||
+			forecast.status === null ? (
 				<Spinner animation="border" style={{ marginTop: '50px' }} />
 			) : currentCondition.status === 'failed' || forecast.status === 'failed' || geolocation.status === 'failed' ? (
 				alert('The allowed number of requests has been exceeded!')
 			) : (
 				<div className="weather-container">
-					<CurrentWeatherComp city={city} getDegreesStr={getDegreesStr} />
+					<CurrentWeatherComp city={city} />
 					<div className="forecast-info">
-						{forecast.data.DailyForecasts.map((daily, index) => <ForecastDay key={index} daily={daily} getDegreesStr={getDegreesStr} />)}
+						{forecast.data.DailyForecasts.map((daily, index) => <ForecastDay key={index} daily={daily} />)}
 					</div>
 				</div>
 			)}

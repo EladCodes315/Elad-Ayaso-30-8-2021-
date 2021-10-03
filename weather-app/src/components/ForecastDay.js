@@ -1,7 +1,22 @@
 import React from 'react';
+import { useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import './ForecastDay.css';
 
-const ForecastDay = ({ daily, getDegreesStr }) => {
+const ForecastDay = ({ daily }) => {
+	let { data: celcius } = useSelector(state => state.celcius);
+
+	const getDegreesStr = useCallback(
+		fahren => {
+			if (celcius) {
+				let calcCelcius = (fahren - 32) / 1.8;
+				return `${calcCelcius.toFixed(1)}°C`;
+			}
+			else return `${fahren.toFixed(1)}°F`;
+		},
+		[ celcius ]
+	);
+
 	const dayFinder = () => {
 		let d = new Date(daily.Date);
 		let days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];

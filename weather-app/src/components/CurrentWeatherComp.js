@@ -4,7 +4,7 @@ import { addToFavorites, removeFromFavorites } from '../redux/slices/favoritesSl
 import { changeDegree } from '../redux/slices/celciusSlice';
 import './CurrentWeatherComp.css';
 
-const CurrentWeatherComp = ({ city, getDegreesStr }) => {
+const CurrentWeatherComp = ({ city }) => {
 	const dispatch = useDispatch();
 	let { data: geolocationData } = useSelector(state => state.geolocation);
 	let { data: currentConditionData } = useSelector(state => state.currentCondition);
@@ -56,7 +56,11 @@ const CurrentWeatherComp = ({ city, getDegreesStr }) => {
 				</div>
 				<div className="weather-info">
 					<div className="degrees-info">
-						{getDegreesStr(currentConditionData.Temperature.Imperial.Value)}
+						{celcius ? (
+							`${currentConditionData.Temperature.Metric.Value}°${currentConditionData.Temperature.Metric.Unit}`
+						) : (
+							`${currentConditionData.Temperature.Imperial.Value}°${currentConditionData.Temperature.Imperial.Unit}`
+						)}
 						<div className="degree-change-btn" onClick={() => dispatch(changeDegree())}>
 							|{celcius ? currentConditionData.Temperature.Imperial.Unit : currentConditionData.Temperature.Metric.Unit}
 						</div>

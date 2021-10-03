@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import NavBarComp from './NavBarComp';
 import HomeScreen from './HomeScreen';
@@ -9,23 +8,10 @@ import './App.css';
 import { useSelector } from 'react-redux';
 
 function App(){
-	const [ bgImage, setBgImage ] = useState();
-	const [ fontColor, setFontColor ] = useState();
 	let { data: theme } = useSelector(state => state.theme);
 
-	useEffect(
-		() => {
-			if (theme === 'light') {
-				setBgImage(lightModeImg);
-				setFontColor('#000');
-			}
-			else {
-				setBgImage(darkModeImg);
-				setFontColor('#FFF');
-			}
-		},
-		[ theme ]
-	);
+	let bgImage = theme === 'dark' ? darkModeImg : lightModeImg;
+	let fontColor = theme === 'dark' ? '#FFF' : '#000';
 
 	return (
 		<div className="App" style={{ color: fontColor, backgroundImage: `url(${bgImage})` }}>
